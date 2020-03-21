@@ -1,5 +1,7 @@
 import React ,{Component} from 'react';
 import UI from "./TodoUI"
+import AddTodo from "./addTodo"
+
 class App extends Component{
   state={
     todos:[
@@ -7,10 +9,20 @@ class App extends Component{
       {id:2,content:"play cricket"}
     ]
   }
+  updateState = (data) =>{
+    var last_id = this.state.todos[this.state.todos.length-1].id
+    data.id=last_id+1;
+    let finalData = [...this.state.todos,data]
+    this.setState({
+      todos:finalData
+    })
+  }
   render(){
   return (
     <div className="App">
+    <h1 className="center blue-text" >Todo's</h1>
       <UI data={this.state.todos} />
+      <AddTodo updateList={this.updateState}/>
     </div>
   );
 }}
