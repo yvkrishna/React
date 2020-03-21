@@ -1,6 +1,6 @@
 import React from 'react'
 
-const About = () =>{
+function About(){
     return(
         <div className="container">
             <h4>About</h4>
