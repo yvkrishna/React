@@ -17,12 +17,32 @@ const getBooksQuery = gql`
         }
     }
 `
-const getBook = gql`
-    {
-        book(id:"5e77811cbcff1b2e40b7d677"){
-            name
+const getBookQuery = gql`
+    query($id:ID!){
+        book(id:$id){
             id
+            name
+            genre
+            author{
+                id
+                name
+                age
+                books{
+                    name
+                    id
+                }
+            }
         }
     }
 `
-export {getAuthorsQuery,getBooksQuery,getBook}
+
+const addBookMutation = gql`
+        mutation($name:String!,$genre:String!,$authorId:String!){
+            addbook(name:$name,genre:$genre,authorId:$authorId){
+                name
+                id
+            }
+        }
+`
+
+export {getAuthorsQuery,getBooksQuery,getBookQuery,addBookMutation}
