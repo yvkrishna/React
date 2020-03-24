@@ -34,26 +34,39 @@ const BookType = new GraphQLObjectType({
         id: { type:GraphQLID },
         name:{ type:GraphQLString },
         genre:{ type:GraphQLString },
+        authorId:{ type:GraphQLString },
         author:{
             type:AuthorType,
-            resolve(parent,args){
-                var returnAuthor = new Promise(function(resolve,reject){
-                    db.author.find({_id:parent.authorId},function(err,data){
+            async resolve(parent,args){
+                function getdata(){
+                return new Promise(function(resolve,reject){
+                    var o_id = ObjectId(parent.authorId);
+                    var obj = {_id:o_id}
+                    db.author.find(obj,(err,data) => {
                         if(err){
                             console.log(err);
-                            reject();
-                        }
+                            reject("error in sending the author data");
+                            }
                         else{
-                            if(data.length>0){
-                                resolve(data);
-                                }else{reject()}
+                                if(data.length>0){
+                                   resolve(data);
+                                }else{reject("data length is ! > 0")}
                         }
                     });
-                });
-                var returnAuth = returnAuthor.then(function(getdata){
-                    return getdata;
-                }).catch(()=>{console.log("Error in getting Author Data")})
-                return returnAuth;
+                })
+                }
+                async function calldata(){
+                    var dataNew = await getdata().then(function(returnedData){
+                        return returnedData;
+                    }).catch(function(errorinpassing){
+                        console.log(errorinpassing);
+                    })
+                    return dataNew
+                }
+                var hello = await calldata()
+                if(hello.length>0){
+                    return hello[0]
+                }
             }
         }
     })
@@ -67,24 +80,36 @@ const AuthorType = new GraphQLObjectType({
         age:{ type:GraphQLInt },
         book:{
             type:new GraphQLList(BookType),
-            resolve(parent,args){
-                var returnBook = new Promise(function(resolve,reject){
-                    db.book.find({authorId:parent._id},function(err,data){
+            async resolve(parent,args){
+                function getdata(){
+                return new Promise(function(resolve,reject){
+                    var o_id = ObjectId(parent._id);
+                    var obj = {authorId:o_id.toString()}
+                    db.book.find(obj,(err,data) => {
                         if(err){
                             console.log(err);
-                            reject();
-                        }
+                            reject("error in sending the book data");
+                            }
                         else{
-                            if(data.length>0){
-                                resolve(data);
-                                }else{reject()}
+                                if(data.length>0){
+                                   resolve(data);
+                                }else{reject("data length is ! > 0")}
                         }
                     });
-                });
-                var returnBook = returnBook.then(function(getdata){
-                    return getdata;
-                }).catch(()=>{console.log("Error in getting Author Data")})
-                return returnBook;
+                })
+                }
+                async function calldata(){
+                    var dataNew = await getdata().then(function(returnedData){
+                        return returnedData;
+                    }).catch(function(errorinpassing){
+                        console.log(errorinpassing);
+                    })
+                    return dataNew
+                }
+                var hello = await calldata()
+                if(hello.length>0){
+                    return hello
+                }
             }
         }
     })
@@ -96,62 +121,71 @@ const RootQuery = new GraphQLObjectType({
         book:{
             type:BookType,
             args:{id:{type:GraphQLID}},
-            resolve(parent,args){
-                // var RequiredBook = new Promise(function(resolve,reject){
+            async resolve(parent,args){
+                function getdata(){
+                return new Promise(function(resolve,reject){
                     var o_id = ObjectId(args.id);
-                    var dataNew =  db.book.find({_id:o_id},async (err,data) => {
+                    var obj = {_id:o_id}
+                    db.book.find(obj,(err,data) => {
                         if(err){
                             console.log(err);
-                            //reject("error in sending the book data");
+                            reject("error in sending the book data");
                             }
                         else{
-                            //return await new Promise(function(resolve,reject){
                                 if(data.length>0){
-                                   await resolve(data);
+                                   resolve(data);
                                 }else{reject("data length is ! > 0")}
-                           // });
                         }
-                    }).then((returnedData)=>{
-                        return returnedData;
                     });
-                    //var val = dataNew
-                //});
-                // var dataNew = RequiredBook.then(async function(returnedData){
-                //     return await returnedData;
-                // }).catch(()=>{
-                //     console.log("error occured");
-                // })
-                // var returnedDatas = dataNew.then((datafromfind)=>{
-                //     return datafromfind
-                // })
-                console.log(val);
-                return val;
+                })
+                }
+                async function calldata(){
+                    var dataNew = await getdata().then(function(returnedData){
+                        return returnedData;
+                    }).catch(function(errorinpassing){
+                        console.log(errorinpassing);
+                    })
+                    return dataNew
+                }
+                var hello = await calldata()
+                if(hello.length>0){
+                    return hello[0]
+                }
             }
             },
             author:{
                 type:AuthorType,
                 args:{id:{type:GraphQLID}},
-                resolve(parent,args){
-                    var RequiredAuth = new Promise(function(resolve,reject){
+                async resolve(parent,args){
+                    function getdata(){
+                    return new Promise(function(resolve,reject){
                         var o_id = ObjectId(args.id);
-                        db.author.find({_id:o_id},function(err,data){
+                        var obj = {_id:o_id}
+                        db.author.find(obj,(err,data) => {
                             if(err){
                                 console.log(err);
-                                reject();
-                            }
+                                reject("error in sending the author data");
+                                }
                             else{
-                                if(data.length>0){
-                                    resolve(data);
-                                    }else{reject()}
+                                    if(data.length>0){
+                                       resolve(data);
+                                    }else{reject("data length is ! > 0")}
                             }
-                        })
-                    });
-                    var AuthReturn = RequiredAuth.then(function(authdata){
-                        return authdata
-                    }).catch(()=>{
-                        console.log("error in sending the author data")
+                        });
                     })
-                    return AuthReturn;
+                    }
+                    async function calldata(){
+                        var dataNew = await getdata().then(function(returnedData){
+                            return returnedData;
+                        }).catch(function(errorinpassing){
+                            console.log(errorinpassing);
+                        })
+                        return dataNew
+                    }
+                    var hello = await calldata()
+                    if(hello.length>0){
+                        return hello[0]
+                    }
                 }
             },
             books:{
