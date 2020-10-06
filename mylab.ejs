@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>MY Lab</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0">
+	<title>Web Page</title>
+	<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+	<script src="https://kit.fontawesome.com/dacf88b734.js" crossorigin="anonymous"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
+	<style>
+		html,body{
+			padding:0px;
+			width: 100%;
+			height: 100%; 
+		}
+		.top{
+			width:100%;
+			height: 270px;
+			background: linear-gradient(to right, rgb(5, 117, 230), rgb(2, 27, 121));
+			position: relative;
+			z-index: -20;
+			border:none;
+		}
+		.navbar{
+			position: absolute;
+			z-index: 10;
+    		top: 32%;
+    		width: 56%;
+    		box-shadow: 0 20px 14px 0 rgba(0,0,0,0.2);
+    		left: 21%;
+		}
+		.navbar-brand,.nav-link{
+			font-size: 25px;
+			letter-spacing: 2px;2
+		}
+		.aisvg{
+			width: 20%;
+		    position: absolute;
+		    z-index: 10;
+		    top: 15%;
+		    left: 0;
+		}
+		.labwork{
+			    width: 20%;
+			    position: absolute;
+			    z-index: 10;
+			    top: 23%;
+			    left: 79%;
+		}
+		.fas{
+			position: absolute;
+		    top: 46%;
+		    left: 46%;
+		}
+		.card{
+			width: 16rem;
+    		height: 230px;
+    		box-shadow: 0 3px 5px 0 rgba(0,0,0,0.2); 
+    		top: 90%;
+    		margin-top: 40px;
+   			overflow: scroll;
+		}
+		::-webkit-scrollbar {
+		    display: none;
+		}
+		.txt{
+			position: absolute;
+		    top: 74%;
+		    left: 33%;
+		}
+		.addsvg{
+			width: 92%;
+		    position: absolute;
+		    left: 0%;
+		}
+		#forms{
+			position: relative;
+			display: none;
+			left: 97%;
+		}
+		#part-2,#part-3{
+			display: none;
+		}
+		.card-title{
+			   text-align: center;
+		}
+		#urproj{
+			margin-top: 7%;
+			margin-left: 5px;
+		}
+		.fa-times{
+			position: fixed;
+		    top: 23%;
+		    left: 82%;
+		    font-size: 59px;
+		    color: tomato;
+		    z-index: 20;
+		}
+		#total{
+			text-align: center;
+			padding-bottom: 20px;
+			padding-top: 20px;
+		}
+		#errornums{
+			font-size: 17px;
+    		color: red;
+		}
+		@media (max-width: 768px){
+			.navbar{
+				width:90%;
+				top: 20%;
+				left: 6%;
+			}
+			.top{
+				height: 200px;
+				width: 104%;
+			}
+			.aisvg , .labwork{
+				display: none;
+			}
+			.projects{
+				margin-left: 25px;
+			}
+			.addpro{
+				height: 54px;
+				left: 15%;
+			}
+			.card1{
+				left: -70%;
+    			top: 152%;
+			}
+			#forms{
+				position: relative;
+				display: none;
+				left: 97%;
+			}
+			.txt{
+			    top: 46%;
+			    left: 45%;
+			    font-size: 18px;
+			}
+			.fas{
+			    top: 29%;
+			    left: 31%;
+			}
+			.addsvg{
+				display: none;
+			}
+			.xyz {
+				left: 15%;
+				margin-top: 25px;
+			}
+			#urproj{
+				margin-top: 13%;
+   				margin-left: 63px;
+			}
+			#total{
+				text-align: center;
+				padding-bottom: 20px;
+			}
+		}
+	</style>
+</head>
+<body>
+	<header id="body_head">
+		<button class="top">
+			<img class="aisvg" src="AI.svg">
+			<img class="labwork" src="Lab-Work.svg">
+		</button>
+		<div class="container">
+			<nav class="navbar navbar-expand-lg navbar-light bg-light">
+			  <a class="navbar-brand" href="#">My Workspace</a>
+			  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+			    <span class="navbar-toggler-icon"></span>
+			  </button>
+
+			  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+			    <ul class="navbar-nav ml-lg-auto">
+			      <li class="nav-item active">
+			        <a class="nav-link" href="#home">Home <span class="sr-only">(current)</span></a>
+			      </li>
+			      <li class="nav-item">
+			        <a class="nav-link" href="./edit_info.html">My Account</a>
+			      </li>
+			      <li class="nav-item">
+			        <a class="nav-link" href="#resume">My Resume</a>
+			      </li>
+			      <li class="nav-item">
+			        <a class="nav-link" href="#lab">Lab</a>
+			      </li>
+			    </ul>
+			  </div>
+			</nav>
+		</div>
+		</header>
+		<br>
+		<br>
+
+		<main id="body_main">
+		<div class="row" id="remove">
+			<div class="col-md-1"></div>
+			<div class="col-md-10">
+				<h2 id="total">My Projects</h2>
+			</div>
+			<div class="col-md-1"></div>
+		</div>
+		<div class="container">
+		<div class="row">
+			<div class="col-md-4">
+				<div class="newproject" id="animation_lr">
+					<div class="card addpro">
+					  <div class="card-body">
+					    <h5 class="card-title"><i class="fas fa-plus"></i></h5>
+					    <h6 class="card-subtitle mb-2 txt text-muted">New Project</h6>
+					  </div>
+					</div>
+				</div>
+			</div>
+			<% if(data.length>0){ %>
+			<% data.forEach(function(pdata){ %>
+			<div class="col-md-4">
+			<div class="project" id="animation_lr">
+			<div class="card card1 xyz projcard">
+			  <div class="card-body">
+			    <h6 class="card-title"><strong>Project Name : </strong>
+			    	<span id="projectName"><%= pdata.pname %></span></h6>
+			    <h6 class="card-title"><strong>Teamleader : </strong><%= pdata.teamleader %></h6>
+			    <p class="card-text"><strong>About Project : </strong><%= pdata.about_project %></p>
+			    <form action="/dashboard" method="POST">
+				    <button type="button" class="btn btn-outline-primary pd"
+				     name="dash">Project Dashboard</button><br>
+			    </form>
+			  </div>
+			</div>
+			</div>
+			</div>
+			<% }); } %>
+			<br>
+			<br>
+		</div>
+		</div>
+		<div id="forms">
+			<div class="row">
+			<div class="col-md-2">
+			</div>
+			<div class="col-md-7">
+				<i class="fas fa-times" onclick="back()"></i>
+			<form action="new-project" method="POST">
+				<div id="part-1">
+				<div class="form-group">
+					    <label>Project Name</label>
+					    <input class="form-control uname" type="text" 
+					    placeholder="Project Name" name="projname" style="width:40%;" 
+					    id="pname">
+				</div>
+				<div class="form-group">
+					    <label>Number Of People</label>
+					    <input class="form-control uname" id="nop" type="number" style="width:40%;" name="no_of_people" value="1">
+				</div>
+				<button type="button" id="f1" onclick="count()" class="btn btn-outline-info">Continue</button>
+				</div>
+				<div id="part-2">
+					<div class="form-group">
+					</div>
+				</div>
+				<div id="part-3">
+					<div class="errorList">
+						<ol id="ols">
+
+						</ol>
+					</div>
+					<label>About Project</label>
+					<textarea required="required" class="form-control uname" id="a" aria-label="With textarea" placeholder="About Project" 
+					name="about_project"></textarea>
+					<br>
+					<button type="button" onclick="checking()" id="f3" class="btn btn-outline-success regproj">submit</button>
+				</div>
+			</form>
+			</div>
+			<div class="col-md-3">
+				<i class="fas fa-times cross" onclick="back()"></i>
+				<img class="addsvg" src="add.svg">
+			</div>
+		</div>
+		</div>
+		</main>
+		<script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+		<script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+<script>
+	var new_project = document.querySelector('.newproject').addEventListener("click",(event) =>{
+		document.getElementById("remove").style.display="none"
+		document.getElementById("forms").style.display="block";
+		document.getElementById("forms").style.width="100%";
+		document.getElementById("forms").style.left="97%";
+		 var element123=document.getElementById("forms");
+		 document.getElementById("forms").style.position="absolute";
+		document.getElementById("forms").style.top="45%";
+		document.getElementById("part-1").style.display="block";
+		document.getElementById("part-2").style.display="none";
+		document.getElementById("part-3").style.display="none";
+
+		element123.classList.add('animated','slideOutLeft');
+
+		element123.addEventListener('animationend', function() { 
+				element123.classList.remove('animated');
+				element123.classList.remove('slideOutLeft');
+				document.getElementById("forms").style.display="block";
+				document.getElementById("forms").style.left="-1%";
+		})
+		document.getElementById("body_head").style.display="none";
+		document.querySelectorAll("#animation_lr").forEach(function(item){
+			item.style.display="none";
+		});
+		document.querySelector(".xyz").style.display="none";
+	}
+	) 
+
+	function back(){
+		document.getElementById("remove").style.display="block"
+		var element123=document.getElementById("forms");
+		element123.classList.add('animated','slideOutRight');
+		element123.addEventListener('animationend', function() { 
+				element123.classList.remove('animated');
+				element123.classList.remove('slideOutRight');
+				document.getElementById("forms").style.display="none";
+				document.getElementById("forms").style.left="0%";
+		})
+		document.getElementById("body_head").style.display="block";
+		document.querySelectorAll("#animation_lr").forEach(function(item){
+			item.style.display="block";
+		});
+		document.querySelector(".xyz").style.display="block";
+		var parent = document.getElementById("part-2");
+		parent.innerHTML = '';
+		document.getElementById("pname").value="";
+		document.getElementById("a").value="";
+	}
+	function count(){
+		var userInput = document.querySelector("#nop").value;
+		var part2 = document.getElementById("part-2");
+		for(var ijk =1 ; ijk<=userInput ; ijk++ )
+		{
+			var divs = document.createElement('div');
+			divs.setAttribute('class','form-group'); 
+			var labels = document.createElement('label');
+			labels.setAttribute('id','p'+ijk.toString());
+			var input = document.createElement('input');
+			input.type='text';
+			input.setAttribute('name','p'+ijk.toString());
+			input.setAttribute('id','person'+ijk.toString());
+			input.setAttribute('class','form-control');
+			input.classList.add("uname");
+			input.setAttribute('style','width:40%;');
+			input.setAttribute('placeholder','person '+ijk.toString()+' name');
+			part2.appendChild(divs);
+			divs.appendChild(labels);
+			document.getElementById("p"+ijk.toString()).innerHTML="person : "+ijk.toString()
+			divs.appendChild(input);
+		}
+		var buttons = document.createElement('button');
+		buttons.type='button';	
+		buttons.setAttribute('id','f2')
+		buttons.setAttribute('class','btn')
+		part2.appendChild(buttons)
+		document.getElementById('f2').classList.add("btn-outline-info");
+		document.getElementById('f2').innerHTML="Continue";
+		var form_info2=document.getElementById('f2').addEventListener("click",(event) =>{
+		document.getElementById("part-1").style.display="none";
+		document.getElementById("part-2").style.display="none";
+		document.getElementById("part-3").style.display="block";
+	}) 
+	}
+	var form_info1=document.getElementById('f1').addEventListener("click",(event) =>{
+		document.getElementById("part-1").style.display="none";
+		document.getElementById("part-3").style.display="none";
+		document.getElementById("part-2").style.display="block";
+	}) 
+	function checking(){
+		var data=document.querySelectorAll(".uname");
+		var i=0;
+		var errors=[];
+		for(i=0;i<data.length;i++){
+			if(data[i].value.length<=0)
+			{
+				errors.push(data[i].placeholder+" cannot be empty");
+			}
+		}
+		errors=errors.filter((item, i, ar) => ar.indexOf(item) === i)
+		if(errors.length == 0){
+				var regproj = document.querySelector(".regproj");
+				regproj.type="submit";
+				regproj.form.submit();
+		}
+		try{
+			var ols=document.querySelector("#ols");
+			ols.innerHTML=""
+		}
+		finally{
+			errors.forEach(function(item){
+				var ols=document.querySelector("#ols");
+				var y = document.createElement('LI');
+				y.setAttribute('id','errornums')
+				var t = document.createTextNode(item);
+				y.appendChild(t);
+				ols.appendChild(y);
+			})
+		}
+	}
+	var projectName;
+	var projectnames=document.querySelectorAll(".projcard");
+	for(var i=0;i<projectnames.length;i++){
+		projectName=projectnames[i].querySelector("#projectName").innerHTML;
+		projectnames[i].querySelector(".pd").setAttribute('value',projectName);
+		projectnames[i].querySelector(".pd").type="submit";
+		projectnames[i].querySelector(".pd").form.submit();
+	}
+</script>
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+</body>
+</html>
