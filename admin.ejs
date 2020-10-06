@@ -1,0 +1,292 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Admin pannel</title>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0">
+	<title>Web Page</title>
+	<link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+	<script src="https://kit.fontawesome.com/dacf88b734.js" crossorigin="anonymous"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css">
+	<style>
+		html,body{
+			padding:0px;
+			width: 100%;
+			height: 100%; 
+		}
+		.card{
+			box-shadow: 4px 8px 14px 1px rgba(0, 0, 255, .2);
+    		margin-bottom: 11px;
+    		overflow: scroll;
+    		max-height: 13em;
+		}
+		.top{
+			width:100%;
+			height: 270px;
+			background: linear-gradient(to left, rgb(241, 39, 17), rgb(245, 175, 25)); 
+			position: relative;
+			z-index: -20;
+			border:none;
+		}
+		.navbar{
+			position: absolute;
+			z-index: 10;
+    		top: 32%;
+    		width: 62%;
+    		box-shadow: 0 20px 14px 0 rgba(0,0,0,0.2);
+    		left: 17%;
+		}
+		.navbar-brand,.nav-link{
+			font-size: 25px;
+			letter-spacing: 2px;2
+		}
+		.aisvg{
+			width: 18%;
+		    position: absolute;
+		    z-index: 10;
+		    top: 20%;
+		    left: 0;
+		}
+		.labwork{
+			    width: 18%;
+			    position: absolute;
+			    z-index: 10;
+			    top: 31%;
+			    left: 79%;
+		}
+		#notifications{
+			display: none;
+		}
+		#remmem,#remproj{
+		    margin-top: -140px;
+    		margin-left: 100px;
+		}
+		::-webkit-scrollbar {
+		    display: none;
+		}
+		.fas{
+			font-size: 22px;
+		    color: red;
+		    position: absolute;
+		}
+		.font-size-29{
+			font-size: 29px;
+		}
+		.projtitle{
+			font-family: cursive;
+		}
+		@media (max-width: 768px){
+			.navbar{
+				width:90%;
+				top: 20%;
+				left: 6%;
+			}
+			.top{
+				height: 200px;
+				width: 104%;
+			}
+			.aisvg , .labwork{
+				display: none;
+			}
+		}
+	</style>
+	<script>
+			function notification(){
+				document.querySelector("#proj_lists").style.display="none";
+				document.querySelector("#notifications").style.display="block";
+				var name;
+				var names=document.querySelectorAll(".membership");
+				for(var i=0;i<names.length;i++){
+					name=names[i].querySelector("#regemail").innerText;
+					names[i].querySelector(".ac").setAttribute('value',name);
+					names[i].querySelector("#remmem").setAttribute('value',name);
+				}
+				var pname;
+				var pnames=document.querySelectorAll(".proposal");
+				for(var i=0;i<pnames.length;i++){
+					pname=pnames[i].querySelector("#pname").innerText;
+					pnames[i].querySelector(".accept").setAttribute('value',pname);
+				pnames[i].querySelector("#remproj").setAttribute('value',pname);
+				}
+			}
+			function workspace(){
+				document.querySelector("#proj_lists").style.display="block";
+				document.querySelector("#notifications").style.display="none"
+			}
+			
+		</script>
+</head>
+<body>
+
+	<header id="body_head">
+		<button class="top">
+			<img class="aisvg" src="AI.svg">
+			<img class="labwork" src="Lab-Work.svg">
+		</button>
+		<div class="container">
+			<nav class="navbar navbar-expand-lg navbar-light bg-light">
+			  <a class="navbar-brand" href="#" onclick="workspace()">My Workspace</a>
+			  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+			    <span class="navbar-toggler-icon"></span>
+			  </button>
+
+			  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+			    <ul class="navbar-nav ml-lg-auto">
+			      <li class="nav-item active">
+			        <a class="nav-link" href="#home">Home <span class="sr-only">(current)</span></a>
+			      </li>
+			      <li class="nav-item">
+			        <a class="nav-link" href="/profile/admin">My Account</a>
+			      </li>
+			      <li class="nav-item">
+			        <a class="nav-link" href="#resume">My Resume</a>
+			      </li>
+			      <li class="nav-item">
+			        <a class="nav-link" href="#lab">Lab</a>
+			      </li>
+			      <li class="nav-item">
+			        <a class="nav-link" href="#notifications" onclick="notification()">Notifications<% if(data[0].members_data.length>0 || data[1].proj_wait_list.length>0){ console.log(data)%> <i 
+			        	class="fas fa-exclamation"></i><% } %></a>
+			      </li>
+			    </ul>
+			  </div>
+			</nav>
+		</div>
+		</header>
+		<br>
+		<br>
+		<br>
+		<main>
+			<div id="proj_lists">
+		<div class="row" id="remove">
+			<div class="col-md-5 col-2"></div>
+			<div class="col-md-2 col-8">
+				<h2 id="total">Projects List</h2>
+			</div>
+			<div class="col-md-5 col-2"></div>
+		</div>
+		<br>
+		<br>
+		<% if(data[2]){ %>
+		<div class="container">
+			<div class="row">
+				<% data[2].all_projects.forEach(function(item){ %>
+				<div class="col-md-4 col-sm-6 col-12">
+				<div class="project">   
+				<div class="card card1 xyz">
+				  <div class="card-body"  id="animation_lr">
+				  	<blockquote class="blockquote mb-0">
+				      <h5 class="card-title lead font-size-29 projtitle"><%= item.pname %></h5>
+				      <p><footer class="blockquote-footer" style="font-size: 18px;">By <%= item.teamleader %><cite title=" and his team"> and team</cite></footer></p>
+				    </blockquote>
+				    <p class="card-text abtproj"><%= item.about_project %></p>
+				  </div>
+				</div>
+				</div>
+				</div>
+				<% }); } %>
+			</div>
+		</div>
+		</div>
+		<div id="notifications">
+			<div class="container">
+				<% if(data[0].members_data.length>0 || data[1].proj_wait_list.length>0){ %>
+				<% if(data[0].members_data.length>0){ %>
+				<div class="row">
+					<div class="col">
+						<h5>Student Membership</h5>
+					</div>
+				</div>
+				<div class="row">
+					<% data[0].members_data.forEach(function(item){ %>
+					<div class="col-md-4 col-sm-6 col-12">
+						<div class="card membership">
+						  <div class="card-body">
+						    <h6 class="card-title"><strong>Name : </strong>
+						    	<%= item.name %></h6>
+						    <h6 class="card-text">
+						    	<strong>Email : </strong><span id="regemail"><%= item.email %></span></h6>
+						    <h6 class="card-text">	
+						    	<strong>Mobile Number : </strong><%= item.mobile %>
+						    </h6>
+						    <h6 class="card-text">	
+						    	<strong>Roll Number : </strong><%= item.rollnum %>
+						    </h6>
+						    <form action="/add" method="GET">
+							    <button type="submit" name="accept" class="btn btn-outline-success ac">Accept</button>
+							</form><br>
+							<form action="/reject" method="GET">
+							    <button type="submit"id="remmem" class="btn btn-outline-danger" name="reject">Reject</button>
+							</form>
+						  </div>
+						</div>
+					</div>
+					<% }); } %>
+					<br><br>
+					<% if(data[1].proj_wait_list.length>0){ %>
+						<div class="row">
+							<div class="col">
+								<h5>Project Proposal</h5>
+							</div>
+						</div>
+					<div class="row">
+					<% for(var i=1;i<=data[1].proj_wait_list.length;i++){ %>
+						<div class="col-md-4 col-sm-5">
+						<div class="card proposal">
+						  <div class="card-body">
+						    <h6 class="card-title"><strong>Project Name : </strong>
+						    	<span id="pname"><%= data[1].proj_wait_list[i-1].pname %>
+						    	</span></h6>
+						    <h6 class="card-text">
+						    	<strong>Number of people : </strong><%= data[1].proj_wait_list[i-1].no_of_people %></h6>
+						    <h6 class="card-text">	
+						    	<strong>Team Leader : </strong>
+						    	<%= data[1].proj_wait_list[i-1].teamleader %>
+						    </h6>
+						    <% var teammates = data[1].proj_wait_list[i-1].teammates; %>
+						    <% if(teammates.length>1){ %>
+						    <h6 class="card-text">	
+						    	<strong>Team Members :</strong>
+						    	<ol>
+						    	<% for(var j=1;j<=teammates.length;j++){ %>
+						    			<li><%= teammates[j-1].person %></li>
+						    		<% }; };%>
+						    	</ol>
+						    </h6>
+						    <form action="/addproj" method="GET">
+							    <button type="submit" name="acceptproj" class="btn btn-outline-success accept">Accept</button>
+							</form><br>
+							<form action="/rejectproj" method="GET">
+							    <button type="submit"id="remproj" class="btn btn-outline-danger" name="rejectproj">Reject</button>
+							</form>
+						  </div>
+						</div>
+					</div>
+					<% }; %><% }}else{ %>
+						<div class="container">
+							<div class="row justify-content-center">
+								<h4 class="lead font-size-29">There are no new notifications</h4>
+							</div>
+						</div>
+					<% }; %>
+				</div>
+			</div>
+		</div>
+		</div>
+		</main>
+
+<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+<script>
+	document.querySelectorAll(".abtproj").forEach(function(item){
+	    var str = item.innerHTML;
+	    if(str.length>100){
+        	item.innerHTML = str.substring(0, 100)+" ..."; 
+		}
+	})
+</script>
+</body>
+</html>
